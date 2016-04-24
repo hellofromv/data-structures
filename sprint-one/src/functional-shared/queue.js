@@ -8,17 +8,14 @@ var Queue = function() {
 
   // modifies the object `newQueue` to add within it the functions contained w/in `queueMethods`
     // basically, takes the contents of `queueMethods` and sticks them in `newQueue`
-  // _.extend(newQueue, queueMethods);
-  newQueue.size = function() {
-    return newQueue.length - newQueue.head < 0 ? 0 : newQueue.length - newQueue.head;
-  };
+  _.extend(newQueue, queueMethods);
 
   return newQueue;
 };
 
 var queueMethods = {
   size: function() {
-    return newQueue.length - newQueue.head < 0 ? 0 : newQueue.length - newQueue.head;
+    return this.length - this.head < 0 ? 0 : this.length - this.head;
   },
   enqueue: function(value) {
     this[this.length] = value;
@@ -27,9 +24,8 @@ var queueMethods = {
   dequeue: function() {
     var dequeued = this[this.head];
     delete this[this.head];
-    // this.length--;
     this.head++;
 
-    return dequeued;
+    return dequeued; 
   }
 };
